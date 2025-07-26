@@ -31,6 +31,16 @@ export default function InfiniteHello() {
         })
     }
 
+    const playDink = () => {
+        const dink = new Audio('/tone.wav')
+        dink.play();
+    }
+
+    const playBloop = () => {
+        const bloop = new Audio('/roll.wav')
+        bloop.play();
+    }
+
 
     useEffect(() => {
         const onMsg = (e: MessageEvent) => {
@@ -38,6 +48,7 @@ export default function InfiniteHello() {
             switch (msg.type) {
                 case "spin": {
                     setTimerStatus('Rolling...')
+                    playBloop();
                     spin(msg.rollPx);
                     break;
                 }
@@ -45,6 +56,7 @@ export default function InfiniteHello() {
                     setTimerStatus('Preparing to roll...')
                     setResultBalls(msg.resBalls);
                     startTimer();
+                    playDink();
                     break;
                 }
             }

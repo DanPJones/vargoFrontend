@@ -16,7 +16,7 @@ const BetSection = ({ balance, setBalance }: any) => {
     const [greenBetTotals, setGreenBetTotals] = useState(0);
     const [blackBetTotals, setBlackBetTotals] = useState(0);
 
-    const [betsLocked, setBetsLocked] = useState(false);
+    const [betsLocked, setBetsLocked] = useState(true);
 
 
     const handleBetAmountChange = (e: any) => {
@@ -102,15 +102,15 @@ const BetSection = ({ balance, setBalance }: any) => {
                 <p className='font-bold text-black'>Balance: {balance}</p>
                 <ButtonGroup color='inherit' size="small" variant="contained" className=''
                 sx={{ '& .MuiButton-root': { color: '#000' } }}>
-                    <Button className="text-black">Clear</Button>
+                    <Button onClick={() => {setBetAmount('')}} className="text-black">Clear</Button>
                     <Button className="text-black">Last</Button>
-                    <Button className="text-black">+1</Button>
-                    <Button className="text-black">+10</Button>
-                    <Button className="text-black">+100</Button>
-                    <Button className="text-black">+1000</Button>
-                    <Button className="text-black">1/2</Button>
-                    <Button className="text-black">x2</Button>
-                    <Button className="text-black">Max</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) + 1))}} className="text-black">+1</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) + 10))}} className="text-black">+10</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) + 100))}} className="text-black">+100</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) + 1000))}} className="text-black">+1000</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) / 2))}} className="text-black">1/2</Button>
+                    <Button onClick={() => {setBetAmount(String(Number(betAmount) * 2))}} className="text-black">x2</Button>
+                    <Button onClick={() => setBetAmount(balance)} className="text-black">Max</Button>
                 </ButtonGroup>
                 <TextField
                     slotProps={{
